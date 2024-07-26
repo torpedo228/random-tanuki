@@ -49,14 +49,12 @@
 
 <template>
 	<div class="flex-v-c w-full h-full">
-		<div
-			class="flex-h-c w-full"
-			v-if="imageUrl">
+		<div class="flex-h-c w-full">
 			<div class="w-[1000px] aspect-[5/3] flex-v-c overflow-hidden">
 				<img
 					class="w-full h-full object-cover"
 					:src="imageUrl"
-					alt="隨機圖片"
+					alt="二!狸貓"
 			/></div>
 		</div>
 	</div>
