@@ -22,7 +22,6 @@ export default function handler(req, res) {
       return;
     }
     const selectedImage = `images/${images[index]}`;
-    // const selectedImage = `/images/${images[index]}`;
 
     res.status(200).json({ imgSrc: selectedImage });
   });

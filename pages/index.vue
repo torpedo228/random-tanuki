@@ -7,15 +7,13 @@
 	const config = useRuntimeConfig();
 
 	const loadImage = async () => {
-		const getRandomtanuki = await fetch(
-			`${config.public.apiBaseUrl}/randomTanuki/?i=${index.value}`,
-		);
-
-		console.log(`${config.public.apiBaseUrl}/randomTanuki/?i=${index.value}`);
-
-		// const getRandomtanuki = `https://random-tanuki.vercel.app/api/randomTanuki/?i=${index.value}`;
-
+		// const getRandomtanuki = await fetch(
+		// 	`${config.public.apiBaseUrl}/randomTanuki/?i=${index.value}`,
+		// );
 		try {
+			const getRandomtanuki = await fetch(
+				`https://random-tanuki.vercel.app/api/randomTanuki/?i=${index.value}`,
+			);
 			const data = await getRandomtanuki.json();
 
 			console.log("API 返回的數據:", data);
@@ -58,9 +56,7 @@
 
 <template>
 	<div class="flex-v-c w-full h-full">
-		<div
-			class="flex-h-c w-full"
-			v-if="imageUrl">
+		<div class="flex-h-c w-full">
 			<div class="w-[1000px] aspect-[5/3] flex-v-c overflow-hidden">
 				<img
 					class="w-full h-full object-cover"
