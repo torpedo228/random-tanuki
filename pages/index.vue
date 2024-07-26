@@ -2,7 +2,7 @@
 	const randomTanukiStore = useRandomTanukiStore();
 
 	const index = ref<number>();
-	const imageUrl = ref<string>("");
+	const imageSrc = ref<string>("");
 	const totalImages = ref<number | null>(null);
 
 	const loadImage = async () => {
@@ -12,16 +12,16 @@
 			const response = await fetch(getRandomtanuki);
 			const data = await response.json();
 			console.log("API 返回的數據:", data);
-			if (data.url) {
-				imageUrl.value = data.url;
+			if (data.imgSrc) {
+				imageSrc.value = data.imgSrc;
 				totalImages.value = data.totalImages;
 			} else {
-				imageUrl.value = "";
+				imageSrc.value = "";
 				alert("圖片加載錯誤");
 			}
 		} catch (error) {
 			console.error("圖片加載錯誤:", error);
-			imageUrl.value = "";
+			imageSrc.value = "";
 			alert("圖片加載錯誤");
 		}
 	};
@@ -39,8 +39,7 @@
 		if (i) {
 			index.value = Number(i);
 		} else {
-			// 如果沒有查詢參數，生成一個隨機索引
-			index.value = Math.floor(Math.random() * randomTanukiStore.totalImages!); // 確保 totalImages 有值
+			index.value = Math.floor(Math.random() * randomTanukiStore.totalImages!);
 		}
 
 		await loadImage();
@@ -53,7 +52,7 @@
 			<div class="w-[1000px] aspect-[5/3] flex-v-c overflow-hidden">
 				<img
 					class="w-full h-full object-cover"
-					:src="imageUrl"
+					:src="imageSrc"
 					alt="二!狸貓"
 			/></div>
 		</div>
