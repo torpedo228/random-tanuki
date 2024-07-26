@@ -8,13 +8,19 @@
 	const config = useRuntimeConfig();
 
 	const loadImage = async () => {
-		const getRandomtanuki = `${config.public.apiBaseUrl}/randomtanuki/?i=${index.value}`;
-		// const getRandomtanuki = `https://random-tanuki.vercel.app/api/randomtanuki/?i=${index.value}`;
+		const getRandomtanuki = await fetch(
+			`${config.public.apiBaseUrl}/randomTanuki/?i=${index.value}`,
+		);
+
+		console.log(`${config.public.apiBaseUrl}/randomTanuki/?i=${index.value}`);
+
+		// const getRandomtanuki = `https://random-tanuki.vercel.app/api/randomTanuki/?i=${index.value}`;
 
 		try {
-			const response = await fetch(getRandomtanuki);
-			const data = await response.json();
+			const data = await getRandomtanuki.json();
+
 			console.log("API 返回的數據:", data);
+
 			if (data.url) {
 				imageUrl.value = data.url;
 				totalImages.value = data.totalImages;
@@ -30,8 +36,6 @@
 	};
 	// 在組件加載時檢查網址中的查詢參數
 	onMounted(async () => {
-		console.log("API base URL:", config.public.apiBase);
-
 		const getTotalTanukis = await fetch(`${config.public.apiBaseUrl}/totalTanukis`);
 		console.log(`${config.public.apiBaseUrl}/totalTanukis`);
 		// const getTotalTanukis = await fetch(`https://random-tanuki.vercel.app/api/totalTanukis`);
