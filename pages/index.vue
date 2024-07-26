@@ -51,6 +51,7 @@
 		<div class="flex-h-c w-full">
 			<div class="w-[1000px] aspect-[5/3] flex-v-c overflow-hidden">
 				<img
+					v-if="imageSrc"
 					class="w-full h-full object-cover"
 					:src="imageSrc"
 					alt="二!狸貓"
