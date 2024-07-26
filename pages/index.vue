@@ -4,17 +4,23 @@
 	const index = ref<number>();
 	const imageUrl = ref<string>("");
 	const totalImages = ref<number | null>(null);
-	const config = useRuntimeConfig();
+
+	const fetchData = async (url: string): Promise<any> => {
+		try {
+			const response = await fetch(url);
+			if (!response.ok) throw new Error("Network response was not ok");
+			return response.json();
+		} catch (error) {
+			console.error("Fetch error:", error);
+			throw error;
+		}
+	};
 
 	const loadImage = async () => {
 		try {
-			const getRandomtanuki = await fetch(
+			const data = await fetchData(
 				`https://random-tanuki.vercel.app/api/randomTanuki/?i=${index.value}`,
 			);
-			const data = await getRandomtanuki.json();
-
-			console.log("API 返回的數據:", data);
-
 			if (data.url) {
 				imageUrl.value = data.url;
 				totalImages.value = data.totalImages;
@@ -23,31 +29,29 @@
 				alert("圖片加載錯誤");
 			}
 		} catch (error) {
-			console.error("圖片加載錯誤:", error);
 			imageUrl.value = "";
 			alert("圖片加載錯誤");
 		}
 	};
-	// 在組件加載時檢查網址中的查詢參數
+
 	onMounted(async () => {
-		const getTotalTanukis = await fetch("https://random-tanuki.vercel.app/api/totalTanukis");
+		try {
+			const data = await fetchData("https://random-tanuki.vercel.app/api/totalTanukis");
+			randomTanukiStore.totalImages = data.totalImages;
 
-		const data = await getTotalTanukis.json();
+			const query = new URLSearchParams(window.location.search);
+			const i = query.get("i");
 
-		randomTanukiStore.totalImages = data.totalImages;
+			if (i) {
+				index.value = Number(i);
+			} else {
+				index.value = Math.floor(Math.random() * randomTanukiStore.totalImages!);
+			}
 
-		const query = new URLSearchParams(window.location.search);
-		const i = query.get("i");
-
-		if (i) {
-			index.value = Number(i);
-		} else {
-			// 如果沒有查詢參數，生成一個隨機索引
-			index.value = Math.floor(Math.random() * randomTanukiStore.totalImages!); // 確保 totalImages 有值
+			await loadImage();
+		} catch (error) {
+			console.error("初始數據加載錯誤:", error);
 		}
-
-		console.log(index.value);
-		await loadImage();
 	});
 </script>
 
@@ -58,8 +62,8 @@
 				<img
 					class="w-full h-full object-cover"
 					:src="imageUrl"
-					alt="二!狸貓"
-			/></div>
+					alt="二!狸貓" />
+			</div>
 		</div>
 	</div>
 </template>
