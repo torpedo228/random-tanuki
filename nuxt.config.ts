@@ -3,8 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.API_BASE_URL_DEV,
-      apiImgUrl: process.env.API_IMG_URL_DEV,
+      // apiBaseUrl: process.env.API_BASE_URL_DEV,
+      // apiImgUrl: process.env.API_IMG_URL_DEV,
+
+      apiBaseUrl: process.env.API_IMG_URL_PRODUCTION,
+      apiImgUrl: process.env.API_IMG_URL_PRODUCTION,
     },
   },
   routeRules: {
