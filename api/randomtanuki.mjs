@@ -22,7 +22,8 @@ export default function handler(req, res) {
       return;
     }
 
-    const selectedImage = `/images/${images[index]}`;
+    const selectedImage = `${config.public.apiImgUrl}/${images[index]}`;
+    // const selectedImage = `https://random-tanuki.vercel.app/images/${images[index]}`;
     res.status(200).json({ url: selectedImage });
   });
 }
