@@ -30,6 +30,8 @@
 	};
 	// 在組件加載時檢查網址中的查詢參數
 	onMounted(async () => {
+		console.log("API base URL:", config.public.apiBase);
+
 		const getTotalTanukis = await fetch(`${config.public.apiBaseUrl}/totalTanukis`);
 		console.log(`${config.public.apiBaseUrl}/totalTanukis`);
 		// const getTotalTanukis = await fetch(`https://random-tanuki.vercel.app/api/totalTanukis`);

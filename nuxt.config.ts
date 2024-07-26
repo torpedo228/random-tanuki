@@ -3,11 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   runtimeConfig: {
     public: {
-      // apiBaseUrl: process.env.API_BASE_URL_DEV,
-      // apiImgUrl: process.env.API_IMG_URL_DEV,
+      // apiBaseUrl: "/api",
+      // apiImgUrl: "/images",
 
-      apiBaseUrl: process.env.API_IMG_URL_PRODUCTION,
-      apiImgUrl: process.env.API_IMG_URL_PRODUCTION,
+      apiBaseUrl: "https://random-tanuki.vercel.app/api",
+      apiImgUrl: "https://random-tanuki.vercel.app/images",
     },
   },
   routeRules: {
