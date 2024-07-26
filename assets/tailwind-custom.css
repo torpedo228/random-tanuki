@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer utilities {
+	.flex-h {
+		@apply flex flex-row;
+	}
+	.flex-h-c {
+		@apply flex flex-row justify-center items-center;
+	}
+	.flex-h-b {
+		@apply flex flex-row justify-between items-center;
+	}
+	.flex-h-e {
+		@apply flex-h items-center justify-evenly;
+	}
+
+	.flex-v {
+		@apply flex flex-col;
+	}
+	.flex-v-c {
+		@apply flex flex-col items-center justify-center;
+	}
+	.flex-v-b {
+		@apply flex flex-col justify-between items-center;
+	}
+	.flex-v-e {
+		@apply flex flex-col justify-evenly items-center;
+	}
+
+	.translate-c {
+		@apply -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+	}
+}
+
+@layer components {
+	/* layout */
+
+	.container {
+		@apply xs:max-sm:max-w-full;
+	}
+
+	.gutter {
+		@apply px-8 sm:px-12 lg:px-16 xl:px-24 3xl:px-60;
+	}
+}

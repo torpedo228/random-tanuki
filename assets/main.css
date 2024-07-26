@@ -1,0 +1,66 @@
+@import "./tailwind-custom.css";
+
+.test {
+	border: 1px solid red;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+}
+
+img,
+.select-disable {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	user-drag: none;
+	-ms-user-select: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+header,
+footer {
+	position: relative;
+}
+
+header {
+	z-index: 100;
+}
+
+footer {
+	z-index: 99;
+}
+
+address {
+	font-style: normal;
+}
+
+p,
+span,
+time,
+h1,
+h2,
+h3,
+h4,
+figcaption {
+	word-break: break-all;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+/* fukumoto only*/
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+	z-index: 9999;
+}
+
