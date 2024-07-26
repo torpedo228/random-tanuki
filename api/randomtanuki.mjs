@@ -21,7 +21,7 @@ export default function handler(req, res) {
       res.status(400).json({ error: 'Invalid index' });
       return;
     }
-    const selectedImage = `https://random-tanuki.vercel.app/images/${images[index]}`;
+    const selectedImage = `images/${images[index]}`;
     // const selectedImage = `/images/${images[index]}`;
 
     res.status(200).json({ imgSrc: selectedImage });
