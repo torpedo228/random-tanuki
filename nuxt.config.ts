@@ -4,10 +4,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // apiBaseUrl: "/api",
-      // apiImgUrl: "/images",
-
       apiBaseUrl: "https://random-tanuki.vercel.app/api",
-      apiImgUrl: "https://random-tanuki.vercel.app/images",
     },
   },
   routeRules: {

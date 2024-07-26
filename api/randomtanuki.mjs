@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-const config = useRuntimeConfig();
 
 export default function handler(req, res) {
   const { query } = req;
@@ -22,9 +21,9 @@ export default function handler(req, res) {
       res.status(400).json({ error: 'Invalid index' });
       return;
     }
+    const selectedImage = `https://random-tanuki.vercel.app/images/${images[index]}`;
+    // const selectedImage = `/images/${images[index]}`;
 
-    const selectedImage = `${config.public.apiImgUrl}/${images[index]}`;
-    // const selectedImage = `https://random-tanuki.vercel.app/images/${images[index]}`;
     res.status(200).json({ imgSrc: selectedImage });
   });
 }
