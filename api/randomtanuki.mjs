@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+const config = useRuntimeConfig();
 
 export default function handler(req, res) {
   const { query } = req;

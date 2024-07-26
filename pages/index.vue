@@ -4,7 +4,6 @@
 	const index = ref<number>();
 	const imageUrl = ref<string>("");
 	const totalImages = ref<number | null>(null);
-	4;
 	const config = useRuntimeConfig();
 
 	const loadImage = async () => {
@@ -37,8 +36,6 @@
 	// 在組件加載時檢查網址中的查詢參數
 	onMounted(async () => {
 		const getTotalTanukis = await fetch(`${config.public.apiBaseUrl}/totalTanukis`);
-		console.log(`${config.public.apiBaseUrl}/totalTanukis`);
-		// const getTotalTanukis = await fetch(`https://random-tanuki.vercel.app/api/totalTanukis`);
 
 		const data = await getTotalTanukis.json();
 
@@ -54,6 +51,7 @@
 			index.value = Math.floor(Math.random() * randomTanukiStore.totalImages!); // 確保 totalImages 有值
 		}
 
+		console.log(index.value);
 		await loadImage();
 	});
 </script>
